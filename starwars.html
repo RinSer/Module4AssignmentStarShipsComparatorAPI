@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Star Wars Ship Comparison</title>
+    </head>
+    <body>
+        <h3>Select two Starships from the dropdown lists to compare</h3>
+        <select id="firstShip"></select>
+        <select id="secondShip"></select>
+        <button type="submit" id="compare">Compare</button>
+
+        <table>
+            <thead>
+                <tr>
+                        <th></th>
+                        <th>Starship 1</th>
+                        <th>Starship 2</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Name</td>
+                    <td id="name1"></td>
+                    <td id="name2"></td>
+                </tr>
+                <tr>
+                    <td>Cost</td>
+                    <td id="cost1"></td>
+                    <td id="cost2"></td>
+                </tr>
+                <tr>
+                    <td>Speed</td>
+                    <td id="speed1"></td>
+                    <td id="speed2"></td>
+                </tr>
+                <tr>
+                    <td>Cargo Size</td>
+                    <td id="cs1"></td>
+                    <td id="cs2"></td>
+                </tr>
+                <tr>
+                    <td>Passengers</td>
+                    <td id="passengers1"></td>
+                    <td id="passengers2"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <script src="starwars.js"></script> 
+    </body>
+</html>
