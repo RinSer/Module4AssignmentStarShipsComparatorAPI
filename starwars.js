@@ -28,13 +28,26 @@ function run(genFunc, massive){
 
 
 function *getShips(ships) {
+
+    function createOption(name) {
+        var option = document.createElement('option');
+        option.text = name;
+        return option;
+    }
+
     for (let i = 1; i < 5; i++){
         //fetch the ships
         let shipsResponse = yield fetch("https://swapi.co/api/starships/?page=" + i);
         
         let currentShips = yield shipsResponse.json();
         ships.push(...currentShips.results);
-        console.log(ships);
     }
-    console.log(ships);
+    
+    var first = document.getElementById('firstShip');
+    var second = document.getElementById('secondShip');
+    for (let i = 0; i < ships.length; i++) {
+        first.add(createOption(ships[i].name), i);
+        second.add(createOption(ships[i].name), i);
+    }
+
 }
