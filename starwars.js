@@ -50,4 +50,55 @@ function *getShips(ships) {
         second.add(createOption(ships[i].name), i);
     }
 
+    // Listen for select changes and compare button press
+    var firstShip = ships[0];
+    var secondShip = ships[0];
+
+    first.addEventListener("change", function() {
+        firstShip = ships[first.selectedIndex];
+    });
+
+    second.addEventListener("change", function() {
+        secondShip = ships[second.selectedIndex];
+    });
+
+    var compare = document.getElementById('compare');
+    compare.addEventListener("click", function() {
+
+        function compareShips(quality) {
+            var firstQuality = document.getElementById(quality + "1");
+            var secondQuality = document.getElementById(quality + "2");
+            // Null row colors
+            firstQuality.setAttribute("style", "background-color: white;");
+            secondQuality.setAttribute("style", "background-color: white;");
+
+            firstQuality.innerHTML = firstShip[quality];
+            secondQuality.innerHTML = secondShip[quality];
+            
+            var firstSize = parseInt(firstShip[quality]);
+            var secondSize = parseInt(secondShip[quality]);
+            
+            if (!isNaN(firstSize) && !isNaN(secondSize)) {
+                if (firstSize > secondSize) {
+                    firstQuality.setAttribute("style", "background-color: red;");
+                }
+                if (secondSize > firstSize) {
+                    secondQuality.setAttribute("style", "background-color: red;");
+                }
+            }
+
+        }
+        
+        document.getElementById("name1").innerHTML = firstShip.name;
+        document.getElementById("name2").innerHTML = secondShip.name;
+
+        var qualities = [ "cost_in_credits", 
+                          "max_atmosphering_speed", 
+                          "cargo_capacity",
+                          "passengers" ];
+
+        for (var quality of qualities) {
+            compareShips(quality);
+        }
+    });
 }
